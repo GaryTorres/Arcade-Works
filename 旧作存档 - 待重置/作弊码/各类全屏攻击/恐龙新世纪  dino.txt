@@ -1,0 +1,15 @@
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.rd@109C6=4E714E71</action>  <!-- 大部分攻击  -->
+      <action>maincpu.rw@11A0A=4E71</action>  <!-- 大部分攻击能否攻击到建筑 -->
+      <action>maincpu.rd@11020=4E714E71</action>  <!-- 枪击  -->
+      <action>maincpu.rd@12154=4E714E71</action>  <!-- 枪击能否攻击到建筑  -->
+    </script>
+    <script state="off">
+      <action>maincpu.rd@109C6=64000174</action>
+      <action>maincpu.rw@11A0A=64E6</action>
+      <action>maincpu.rd@11020=64000188</action>
+      <action>maincpu.rd@12154=64000080</action>
+    </script>
+  </cheat>

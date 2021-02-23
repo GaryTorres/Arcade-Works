@@ -1,0 +1,18 @@
+
+  <cheat desc="通用 - 敌兵1v4  [205]">
+    <script state="run">
+      <action>maincpu.rw@13884E=4E71</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@13884E=6C04</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌兵1v4  [204]">
+    <script state="run">
+      <action>maincpu.rw@138838=4E71</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@138838=6C04</action>
+    </script>
+  </cheat>

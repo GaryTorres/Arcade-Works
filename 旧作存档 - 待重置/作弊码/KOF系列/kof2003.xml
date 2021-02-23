@@ -1,0 +1,98 @@
+﻿<mamecheat version="1">
+
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.rd@1621E=4E714E71</action>  <!-- 大部分攻击 -->
+      <action>maincpu.rd@15B2A=4E714E71</action>  <!-- 部分抓取攻击 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rd@1621E=66000122</action>  <!-- 大部分攻击 -->
+      <action>maincpu.rd@15B2A=6600006E</action>  <!-- 部分抓取攻击 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 各类时间不减">
+    <script state="run">
+      <action>maincpu.rd@8ED4=4E714E71</action>  <!-- 角色选择 -->
+      <action>maincpu.rw@9A56=4E71</action>  <!-- 角色排序 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rd@8ED4=532DFD62</action>  <!-- 角色选择 -->
+      <action>maincpu.rw@9A56=8101</action>  <!-- 角色排序 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 回合时间  &lt;设置&gt;">
+    <parameter>
+      <item value="0x60">无限</item>
+      <item value="0x00">0</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@107D62=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" " />
+
+  <cheat desc="p1 - 血量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x70">满</item>
+      <item value="0x12">1/3</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@2FE91D=param</action>
+      <action>maincpu.pb@2FEA1D=param</action>
+      <action>maincpu.pb@2FEB1D=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p1 - 能量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x05">满</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@2FE804=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p1 - 解除角色切换限制">
+    <script state="run">
+      <action>maincpu.pw@2FE806=0000</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" " />
+
+  <cheat desc="p2 - 血量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x70">满</item>
+      <item value="0x12">1/3</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@2FED1D=param</action>
+      <action>maincpu.pb@2FEE1D=param</action>
+      <action>maincpu.pb@2FEF1D=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p2 - 能量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x05">满</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@2FEC04=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p2 - 解除角色切换限制">
+    <script state="run">
+      <action>maincpu.pw@2FEC06=0000</action>
+    </script>
+  </cheat>
+
+</mamecheat>

@@ -1,0 +1,28 @@
+
+  <cheat desc="通用 - 全屏攻击">  <!-- 通用 204/205 -->
+   <comment>
+自行选择是否将注释行的注释去掉，
+去掉后本体攻击可全段作用于全屏敌方，
+但会强制连打</comment>
+    <script state="run">
+      <action>maincpu.rw@1221BA=4E71</action>  <!-- 本体攻击 -->
+      <action>maincpu.rw@1221BC=4E71</action>
+      <!-- <action>maincpu.rw@1221C6=6004</action> -->
+  <!-- 本体攻击可否对所有敌方进行后续连击  [连打] -->
+      <action>maincpu.rw@1221E6=4E71</action>  <!-- 修复武器攻击属性无法作用于所有敌方 -->
+      <action>maincpu.rw@11FC6C=4E71</action>  <!-- 非本体攻击 -->
+      <action>maincpu.rw@11FC6E=4E71</action>
+      <action>maincpu.rw@11F558=4E71</action>  <!-- 非本体攻击能否远距离及背对击中 -->
+      <action>maincpu.rw@11F55A=4E71</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1221BA=6700</action>
+      <action>maincpu.rw@1221BC=11A4</action>
+      <!-- <action>maincpu.rw@1221C6=6604</action> -->
+      <action>maincpu.rw@1221E6=671C</action>
+      <action>maincpu.rw@11FC6C=6700</action>
+      <action>maincpu.rw@11FC6E=0C54</action>
+      <action>maincpu.rw@11F558=6700</action>
+      <action>maincpu.rw@11F55A=1368</action>
+    </script>
+  </cheat>

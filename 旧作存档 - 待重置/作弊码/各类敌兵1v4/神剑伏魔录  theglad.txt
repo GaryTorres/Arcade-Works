@@ -1,0 +1,9 @@
+
+  <cheat desc="通用 - 敌兵1v4">
+    <script state="run">
+      <action>prot.rw@802AD08=0000</action>
+    </script>
+    <script state="off">
+      <action>prot.rw@802AD08=DD02</action>
+    </script>
+  </cheat>

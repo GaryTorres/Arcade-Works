@@ -1,0 +1,11 @@
+
+# src\frontend\mame\ui\info.cpp
+
+std::string machine_info::warnings_string() const
+{
+	std::ostringstream buf;
+// 将原代码此函数块最下方 "return buf.str();" 复制粘贴至上方std的下一行
+    ....
+
+	return buf.str();
+}

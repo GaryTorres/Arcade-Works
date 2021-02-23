@@ -1,0 +1,9 @@
+
+# src\emu\debug\debugcmd.cpp
+
+bool debugger_commands::cheat_address_is_valid(address_space &space, offs_t address)
+{
+	return space.device().memory().translate(space.spacenum(), TRANSLATE_READ, address) && (space.get_write_ptr(address) != nullptr);
+}
+
+// 将 && 改为 || , 或将 return 后内容改为 true

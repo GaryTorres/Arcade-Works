@@ -1,0 +1,19 @@
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.rw@1660AE=4E71</action>  <!-- 本体攻击是否能击中 -->
+      <action>maincpu.rw@1660B0=4E71</action>
+      <action>maincpu.rw@166080=6008</action>  <!-- 本体攻击是否能远距离及背对击中 -->
+      <action>maincpu.rw@1688DA=4E71</action>  <!-- 非本体攻击是否能击中 -->
+      <action>maincpu.rw@1688DC=4E71</action>
+      <action>maincpu.rw@1688A8=6008</action>  <!-- 非本体攻击是否能远距离及背对击中 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1660AE=6700</action>
+      <action>maincpu.rw@1660B0=0BAA</action>
+      <action>maincpu.rw@166080=6608</action>
+      <action>maincpu.rw@1688DA=6700</action>
+      <action>maincpu.rw@1688DC=04F4</action>
+      <action>maincpu.rw@1688A8=6608</action>
+    </script>
+  </cheat>

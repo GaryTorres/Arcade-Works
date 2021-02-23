@@ -1,0 +1,103 @@
+﻿<mamecheat version="1">
+
+
+  <cheat desc="通用 - 街机/家用机  &lt;设置&gt;">
+    <parameter>
+      <item value="0x80">街机</item>
+      <item value="0x00">家用机</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@10FD82=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.rd@2662=4E714E71</action>  <!-- 大部分攻击 -->
+      <action>maincpu.rw@2BC2=4E71</action>  <!-- 部分抓取攻击 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rd@2662=6600011A</action>  <!-- 大部分攻击 -->
+      <action>maincpu.rw@2BC2=6640</action>  <!-- 部分抓取攻击 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 各类时间不减">
+    <script state="run">
+      <action condition="maincpu.rd@ED94==536C00D2">maincpu.rd@ED94=4E714E71</action>  <!-- 角色选择 - 原版 -->
+      <action condition="maincpu.rd@DDBB8==536C00D2">maincpu.rd@DDBB8=4E714E71</action>  <!-- 角色选择 - 部分改版/盗版 -->
+      <action>maincpu.rd@EF3E=4E714E71</action>  <!-- 角色排序 -->
+    </script>
+    <script state="off">
+      <action condition="maincpu.rd@ED94==4E714E71">maincpu.rd@ED94=536C00D2</action>  <!-- 角色选择 - 原版 -->
+      <action condition="maincpu.rd@DDBB8==4E714E71">maincpu.rd@DDBB8=536C00D2</action>  <!-- 角色选择 - 部分改版/盗版 -->
+      <action>maincpu.rd@EF3E=536C00D2</action>  <!-- 角色排序 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 回合时间  &lt;设置&gt;">
+    <parameter>
+      <item value="0x6000">无限</item>
+      <item value="0x0001">0</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@10A7D2=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无视血量限制施放隐藏必杀">
+    <script state="run">
+      <action>maincpu.rd@2A5D6=4E714E71</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rd@2A5D6=62000036</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" " />
+
+  <cheat desc="p1 - 血量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x66">满</item>
+      <item value="0x12">1/3</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@108239=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p1 - 能量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x05">满</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@1082E3=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" " />
+
+  <cheat desc="p2 - 血量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x66">满</item>
+      <item value="0x12">1/3</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@108439=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="p2 - 能量  &lt;设置&gt;">
+    <parameter>
+      <item value="0x05">满</item>
+      <item value="0x00">空</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@1084E3=param</action>
+    </script>
+  </cheat>
+
+</mamecheat>

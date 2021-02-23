@@ -1,0 +1,13 @@
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.ow@123CE=4E71</action>  <!-- 本体攻击 -->
+      <action>maincpu.ow@12BFE=4E71</action>  <!-- 平地攻击 -->
+      <action>maincpu.ow@12400=4E71</action>  <!-- 空中射击 -->
+    </script>
+    <script state="off">
+      <action>maincpu.ow@123CE=6208</action>
+      <action>maincpu.ow@12BFE=6204</action>
+      <action>maincpu.ow@12400=6208</action>
+    </script>
+  </cheat>

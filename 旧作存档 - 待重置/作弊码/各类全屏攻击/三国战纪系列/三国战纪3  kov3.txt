@@ -1,0 +1,13 @@
+
+  <cheat desc="通用 - 全屏攻击">
+    <script state="run">
+      <action>maincpu.rw@1003B6D2=0000</action>  <!-- 本体攻击 -->
+      <action>maincpu.rw@1003A54E=0000</action>  <!-- 道具及部分非本体攻击 -->
+      <action>maincpu.rw@1003A52A=E004</action>  <!-- 道具及部分非本体攻击能否越过屏幕击中 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1003B6D2=D179</action>
+      <action>maincpu.rw@1003A54E=D17A</action>
+      <action>maincpu.rw@1003A52A=D004</action>
+    </script>
+  </cheat>

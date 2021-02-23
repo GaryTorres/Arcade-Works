@@ -1,0 +1,11 @@
+
+  <cheat desc="通用 - 敌兵1v4">
+    <script state="run">
+      <action>maincpu.rw@903A7=02EB</action>
+      <action>maincpu.rw@ADD25=9090</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@903A7=027C</action>
+      <action>maincpu.rw@ADD25=227C</action>
+    </script>
+  </cheat>

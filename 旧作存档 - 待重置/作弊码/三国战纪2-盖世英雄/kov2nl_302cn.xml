@@ -1,0 +1,2595 @@
+﻿<mamecheat version="1">
+
+  <cheat desc="通用 - 卡片次数  自定义">
+   <comment>读卡前选择，即使次数为0的卡片读完卡后也能恢复次数</comment>
+    <parameter>
+      <item value="0x012D">300次</item>
+      <item value="0xFFFF">65535次</item>
+      <item value="0x0001">1次</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pw@2006DC02=param</action>  <!-- 1P -->
+      <action>maincpu.pw@2006DCE2=param</action>  <!-- 2P -->
+      <action>maincpu.pw@2006DDC2=param</action>  <!-- 3P -->
+      <action>maincpu.pw@2006DEA2=param</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 武器攻击属性  自定义">
+    <parameter>
+      <item value="1">冰</item>
+      <item value="2">火</item>
+      <item value="3">电</item>
+      <item value="4">毒</item>
+      <item value="5">晕</item>
+      <item value="6">爆</item>
+    </parameter>
+    <script state="run">
+      <action condition="param==1">maincpu.rw@1000C1BC=0000</action>
+      <action condition="param==1">maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action condition="param==1">maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action condition="param==1">maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action condition="param==1">maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+      <action condition="param==1">maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+
+      <action condition="param==2">maincpu.rw@1000C1EE=0000</action>
+      <action condition="param==2">maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action condition="param==2">maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action condition="param==2">maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action condition="param==2">maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+      <action condition="param==2">maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+
+      <action condition="param==3">maincpu.rw@1000C23E=0000</action>
+      <action condition="param==3">maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action condition="param==3">maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action condition="param==3">maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action condition="param==3">maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+      <action condition="param==3">maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+
+      <action condition="param==4">maincpu.rw@1000C270=0000</action>
+      <action condition="param==4">maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action condition="param==4">maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action condition="param==4">maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action condition="param==4">maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+      <action condition="param==4">maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+
+      <action condition="param==5">maincpu.rw@1000C114=0000</action>
+      <action condition="param==5">maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action condition="param==5">maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action condition="param==5">maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action condition="param==5">maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action condition="param==5">maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+
+      <action condition="param==6">maincpu.rw@1000C2F8=0000</action>
+      <action condition="param==6">maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action condition="param==6">maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action condition="param==6">maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action condition="param==6">maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action condition="param==6">maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000C1BC=D013</action>  <!-- 冰 -->
+      <action>maincpu.rw@1000C1EE=D022</action>  <!-- 火 -->
+      <action>maincpu.rw@1000C23E=D013</action>  <!-- 电 -->
+      <action>maincpu.rw@1000C270=D03E</action>  <!-- 毒 -->
+      <action>maincpu.rw@1000C114=D04E</action>  <!-- 晕 -->
+      <action>maincpu.rw@1000C2F8=D013</action>  <!-- 爆 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌方死亡立即爆物">
+   <comment>已知问题是部分敌将会鬼畜动作加速</comment>
+    <script state="run">
+      <action>maincpu.rw@100517F6=0000</action>  <!-- 敌将血条是否归0 -->
+      <action>maincpu.rw@10010E60=E011</action>  <!-- 敌方尸体闪烁 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100517F6=D101</action>
+      <action>maincpu.rw@10010E60=DD11</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 按键简化">
+   <comment>
+↓↑A = ↑A
+↓→A = ↓A
+↑↓B = ↑C
+↓↑B = ↓C
+←→B = ↑B
+↓→B = ↑D
+←↓→B = ↓D
+   </comment>
+    <script state="run">
+      <action>maincpu.rb@10016268=11</action>  <!-- ↓↑A = ↑A -->
+      <action>maincpu.rb@1001626C=07</action>
+      <action>maincpu.rb@10016270=81</action>
+      <action>maincpu.rw@10016274=4000</action>
+      <action>maincpu.rb@10016210=12</action>  <!-- ↓→A = ↓A -->
+      <action>maincpu.rb@10016214=07</action>
+      <action>maincpu.rb@10016218=81</action>
+      <action>maincpu.rw@1001621C=4000</action>
+      <action>maincpu.rb@10016408=11</action>  <!-- ↑↓B = ↑C -->
+      <action>maincpu.rb@1001640C=07</action>
+      <action>maincpu.rb@10016410=84</action>
+      <action>maincpu.rw@10016414=4000</action>
+      <action>maincpu.rb@10016420=12</action>  <!-- ↓↑B = ↓C -->
+      <action>maincpu.rb@10016424=07</action>
+      <action>maincpu.rb@10016428=84</action>
+      <action>maincpu.rw@1001642C=4000</action>
+      <action>maincpu.rb@10016488=11</action>  <!-- ←→B = ↑B -->
+      <action>maincpu.rb@1001648C=07</action>
+      <action>maincpu.rb@10016490=82</action>
+      <action>maincpu.rw@10016494=4000</action>
+      <action>maincpu.rb@10016388=11</action>  <!-- ↓→B = ↑D -->
+      <action>maincpu.rb@1001638C=07</action>
+      <action>maincpu.rb@10016390=88</action>
+      <action>maincpu.rw@10016394=4000</action>
+      <action>maincpu.rb@100163A8=12</action>  <!-- ←↓→B = ↓D -->
+      <action>maincpu.rb@100163AC=07</action>
+      <action>maincpu.rb@100163B0=88</action>
+      <action>maincpu.rw@100163B4=4000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rb@10016268=12</action>  <!-- ↓↑A = ↑A -->
+      <action>maincpu.rb@1001626C=0F</action>
+      <action>maincpu.rb@10016270=11</action>
+      <action>maincpu.rw@10016274=000F</action>
+      <action>maincpu.rb@10016210=0A</action>  <!-- ↓→A = ↓A -->
+      <action>maincpu.rb@10016214=14</action>
+      <action>maincpu.rb@10016218=02</action>
+      <action>maincpu.rw@1001621C=000C</action>
+      <action>maincpu.rb@10016408=11</action>  <!-- ↑↓B = ↑C -->
+      <action>maincpu.rb@1001640C=0F</action>
+      <action>maincpu.rb@10016410=12</action>
+      <action>maincpu.rw@10016414=000F</action>
+      <action>maincpu.rb@10016420=12</action>  <!-- ↓↑B = ↓C -->
+      <action>maincpu.rb@10016424=0F</action>
+      <action>maincpu.rb@10016428=11</action>
+      <action>maincpu.rw@1001642C=000F</action>
+      <action>maincpu.rb@10016488=13</action>  <!-- ←→B = ↑B -->
+      <action>maincpu.rb@1001648C=0F</action>
+      <action>maincpu.rb@10016490=14</action>
+      <action>maincpu.rw@10016494=000C</action>
+      <action>maincpu.rb@10016388=0A</action>  <!-- ↓→B = ↑D -->
+      <action>maincpu.rb@1001638C=14</action>
+      <action>maincpu.rb@10016390=02</action>
+      <action>maincpu.rw@10016394=000A</action>
+      <action>maincpu.rb@100163A8=03</action>  <!-- ←↓→B = ↓D -->
+      <action>maincpu.rb@100163AC=14</action>
+      <action>maincpu.rb@100163B0=06</action>
+      <action>maincpu.rw@100163B4=0014</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 全关卡">
+   <comment>判断当前第五关走的是吴国路线还是魏国路线，
+若当前吴国路线则下关为魏国路线，反之魏到吴，
+打完才是真正的第六关</comment>
+    <script state="run">
+      <action condition="maincpu.pb@200201E1==01">temp0=0</action>  <!-- 第一关初始化 -->
+      <action condition="maincpu.pd@200201E1==EE050006 AND temp0!=1">maincpu.pd@200201E1=00000007, temp0=1</action>  <!-- 若走魏国路线，下关为吴国 -->
+      <action condition="maincpu.pd@200201E1==F7070006 AND temp0!=1">maincpu.pd@200201E1=00000005, temp0=1</action>  <!-- 若走吴国路线，下关为魏国 -->
+      <action condition="maincpu.pd@200201E1==1C060006">temp0=0</action>  <!-- 第六关初始化 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+  <cheat desc="# 关卡及场景选择 #"/>
+  <cheat desc="　"/>
+
+  <cheat desc="第一章 - 火烧博望">
+    <parameter>
+      <item value="0x0001">初始场景</item>
+      <item value="0x0101">上路 雷区</item>
+      <item value="0x0201">石碑上路</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pd@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第二章 - 计袭新野">
+    <parameter>
+      <item value="0x0002">初始场景</item>
+      <item value="0x0802">不放火 上密室</item>
+      <item value="0x0402">放火 屋顶</item>
+      <item value="0x0A02">放火 屋顶 下密室</item>
+      <item value="0x0502">出城前</item>
+      <item value="0x0102">出城后 选择路线</item>
+      <item value="0x0202">A路 河地</item>
+      <item value="0x0302">B路 木林</item>
+      <item value="0x0902">B路 上密室</item>
+      <item value="0x0B02">B路 下通道</item>
+      <item value="0x0602">C路 城内</item>
+      <item value="0x0702">C路 屋顶决战</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第三章 - 血战长坂">
+    <parameter>
+      <item value="0x0003">初始场景</item>
+      <item value="0x0603">上路难民密室</item>
+      <item value="0x0103">A路 长坂坡</item>
+      <item value="0x0503">A路 井底</item>
+      <item value="0x0403">A路 栅栏密室</item>
+      <item value="0x0203">B路 保护刘琦</item>
+      <item value="0x0303">B路 最终场景</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第四章 - 火烧连环">
+    <parameter>
+      <item value="0x0004">初始场景</item>
+      <item value="0x0104">上船 路线选择</item>
+      <item value="0x0B04">A路 初始场景</item>
+      <item value="0x0D04">A路 下船舱</item>
+      <item value="0x1004">A路 下船舱密室</item>
+      <item value="0x0C04">A路 不下船舱右船</item>
+      <item value="0x0F04">A路 最终场景</item>
+      <item value="0x0204">B路 初始场景</item>
+      <item value="0x0304">B路 左船</item>
+      <item value="0x0504">B路 左船 下船舱</item>
+      <item value="0x1204">B路 左船 下船舱 密室</item>
+      <item value="0x0604">B路 左船 不下船舱</item>
+      <item value="0x0904">B路 左船 最终场景</item>
+      <item value="0x0404">B路 右船</item>
+      <item value="0x0804">B路 右船 下船舱</item>
+      <item value="0x1104">B路 右船 下船舱 密室</item>
+      <item value="0x0704">B路 右船 不下船舱</item>
+      <item value="0x0A04">B路 右船 最终场景</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五章 - 决战赤壁">
+    <parameter>
+      <item value="0x0005">初始场景</item>
+      <item value="0x0105">A路 初始场景</item>
+      <item value="0x0705">A路 进洞 对战许褚</item>
+      <item value="0x0805">A路 进洞 出洞 滚石</item>
+      <item value="0x0905">A路 跳崖</item>
+      <item value="0x0A05">A路 跳崖 山洞</item>
+      <item value="0x0305">A路 不进洞</item>
+      <item value="0x0605">A路 不进洞 滚石山洞</item>
+      <item value="0x0505">B路 保护黄盖</item>
+      <item value="0x0205">骑兵场景</item>
+      <item value="0x0405">最终场景</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五章 - 蜀吴争霸">
+    <parameter>
+      <item value="0x0007">A路 路线选择</item>
+      <item value="0x0107">A路 进门</item>
+      <item value="0x0607">A路 进门 右路 对战黄盖</item>
+      <item value="0x0207">A路 进门 上路 动物</item>
+      <item value="0x0807">A路 进门 上路 乌龟密室</item>
+      <item value="0x0407">B路 初始场景</item>
+      <item value="0x0507">B路 下水道</item>
+      <item value="0x0707">B路 下水道 密室</item>
+      <item value="0x0307">最终场景</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第六章 - 三国一统">
+    <parameter>
+      <item value="0x0006">初始场景</item>
+      <item value="0x0706">上路</item>
+      <item value="0x0406">跳崖 竹筏</item>
+      <item value="0x0306">山寨</item>
+      <item value="0x0106">洞窟</item>
+      <item value="0x0606">洞窟 密室</item>
+      <item value="0x0B06">火牛密室</item>
+      <item value="0x0206">古墓</item>
+      <item value="0x0506">古墓 下密室</item>
+      <item value="0x0806">群雄双王场景</item>
+      <item value="0x0906">双王场景</item>
+      <item value="0x0A06">最终决战场景</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@200201E1=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第一关 - 不去雷区">
+   <comment>初战之地不论玩多久都不会去雷区</comment>
+    <script state="run">
+      <action>maincpu.rw@10099C16=E043</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10099C16=D143</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第一关 - 必出无血条犬神">
+   <comment>若点完火招降出犬神，游戏会无法继续，
+其次点完火选A不会出犬神</comment>
+    <script state="run">
+      <action condition="maincpu.rw@10097D06==4288">maincpu.rw@10097D06=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action>maincpu.rw@10097E50=0000</action>  <!-- 是否使用远程攻击 -->
+      <action>maincpu.rw@10097EFE=0000</action>  <!-- 是否点火 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D06=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@10097E50=7008</action>  <!-- 是否使用远程攻击 -->
+      <action>maincpu.rw@10097EFE=D105</action>  <!-- 是否点火 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第二关 - 放火必定成功">
+    <script state="run">
+      <action>maincpu.pb@2006E6A0=FF</action>  <!-- 1P -->
+      <action>maincpu.pb@2006E6A4=FF</action>  <!-- 2P -->
+      <action>maincpu.pb@2006E6A8=FF</action>  <!-- 3P -->
+      <action>maincpu.pb@2006E6AC=FF</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="第二关 - 必出C路有血条犬神">
+   <comment>即使不放火，或是城里放走了小兵</comment>
+    <script state="run">
+      <action>maincpu.pb@200207F4=00</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第二关 - A路水闸一招击破">
+    <script state="run">
+      <action>maincpu.pb@2004C390=00</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第二关 - 必出无血条犬神">
+    <script state="run">
+      <action condition="maincpu.rw@10097D06==4288">maincpu.rw@10097D06=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action condition="maincpu.rw@10038260==2800">maincpu.rw@10038260=4280</action>  <!-- 是否穿衣 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D06=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@10038260=2800</action>  <!-- 是否穿衣 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第三关 - 老人必定出现且必给踏云天衣">
+   <comment>即使老人被伤，即使未蹲下</comment>
+    <script state="run">
+      <action>maincpu.pb@20020910=01</action>  <!-- 老人是否出现 -->
+      <action>maincpu.rw@100A5C86=0000</action>  <!-- 是否蹲下 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100A5C86=D111</action>  <!-- 是否蹲下 -->
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - 井底栅栏机关直接开">
+   <comment>不用打机关</comment>
+    <script state="run">
+      <action condition="maincpu.pb@200209A4==00">maincpu.pb@200209A4=02</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - 神奇糜夫人">
+   <comment>即使九品官也能救出糜夫人，
+且不论怎么被打都不会死</comment>
+    <script state="run">
+      <action>maincpu.rw@100AAC66=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@100AB9D0=0000</action>  <!-- 被击次数 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100AAC66=2809</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@100AB9D0=DA3F</action>  <!-- 被击次数 -->
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - A路孟获是否出现  设置">
+    <parameter>
+	  <item value="1">立即出现</item>
+	  <item value="2">永不出现</item>
+	</parameter>
+    <script state="run">
+      <action condition="param==1">maincpu.rw@100A6794=0000</action>
+      <action condition="param==2">maincpu.rw@100A6794=E00B</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100A6794=D10B</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - A路孟获必定被吓走">
+   <comment>孟获仍然还在，但杀死孟获的奖励为被被吓走给的奖励，
+不论张飞是否在场，杀死孟获的奖励都是大蛇矛和饭团，
+且第六关会和孟优一同出现</comment>
+    <script state="run">
+      <action>maincpu.pb@20020956=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - A路张郃直接死">
+   <comment>A路限定，开启后直接躺地死，无法给古水</comment>
+    <script state="run">
+      <action>maincpu.pb@20020952=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第三关 - 必出无血条犬神">
+   <comment>A路限定，即使救了糜夫人也能出，击杀顺序随意，
+需要注意的是若犬神出现且离去前未杀死孟获，游戏将无法继续</comment>
+    <script state="run">
+      <action condition="maincpu.rw@10097D30==4288">maincpu.rw@10097D30=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action>maincpu.pb@200206E6=01</action>  <!-- 是否先杀孟获后杀张郃 -->
+      <action>maincpu.rw@10097FC2=4280</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097FAA=0000</action>  <!-- 是否救出糜夫人 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D30=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@10097FC2=2805</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097FAA=D116</action>  <!-- 是否救出糜夫人 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第四关 - AB两路船舱密室直接进">
+   <comment>开启后下船舱尾可直接进密室，
+即使在路上随意打船灯也能进，有方向箭头提示，
+B路右边的没弄，也不需要，不打睡觉的枪兵就行</comment>
+    <script state="run">
+      <action>maincpu.pw@20020B70=0101</action>
+    </script>
+    <script state="off">
+      <action>maincpu.pw@20020B70=0000</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第四关 - 必出无血条犬神">
+   <comment>B路往右走是打不出无血狗的</comment>
+    <script state="run">
+      <action condition="maincpu.rw@10097D30==4288">maincpu.rw@10097D30=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action>maincpu.pb@2005FC54=FF</action>  <!-- 连击数 -->
+      <action>maincpu.rw@10097DAE=0000</action>  <!-- 是否使用默认武器及降将 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D30=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@10097DAE=7800</action>  <!-- 是否使用默认武器及降将 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第五关 魏 - 徐晃不跑路">
+    <script state="run">
+      <action>maincpu.rw@100BC928=E041</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100BC928=D141</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 魏 - A路许诸洞窟左右密室障碍物直接破">
+   <comment>无需自己用火焰弹引爆</comment>
+    <script state="run">
+      <action>maincpu.pb@20020C64=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 魏 - B路黄盖必定保护成功">
+   <comment>即使自己打黄盖一下都没事</comment>
+    <script state="run">
+      <action>maincpu.pb@20020BF4=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 魏 - B路黄盖马车解除道具及法术限制">
+    <script state="run">
+      <action>maincpu.pb@20020218=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 魏 - B路张辽处夏侯惇直接出现">
+   <comment>前提是第一关选了A斩草除根</comment>
+    <script state="run">
+      <action>maincpu.rw@100C0D5C=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100C0D5C=D10C</action>
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 魏 - 必出无血条犬神">
+    <script state="run">
+      <action condition="maincpu.rw@10097D30==4288">maincpu.rw@10097D30=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action condition="maincpu.rw@1009804A==DA01">maincpu.rw@1009804A=E001</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097E50=0000</action>  <!-- 是否使用攻击型道具或法术 -->
+      <action condition="maincpu.rw@10038260==2800">maincpu.rw@10038260=4280</action>  <!-- 是否穿衣 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D30=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@1009804A=DA01</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097E50=7008</action>  <!-- 是否使用攻击型道具或法术 -->
+      <action>maincpu.rw@10038260=2800</action>  <!-- 是否穿衣 -->
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 吴 - 必出无血条犬神">
+    <script state="run">
+      <action condition="maincpu.rw@10097D30==4288">maincpu.rw@10097D30=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@200206DC=029D</action>  <!-- 时间限制 -->
+      <action condition="maincpu.rw@1009804A==DA01">maincpu.rw@1009804A=E001</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097E50=0000</action>  <!-- 是否使用攻击型道具或法术 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097D30=4288</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@1009804A=DA01</action>  <!-- 是否满气 -->
+      <action>maincpu.rw@10097E50=7008</action>  <!-- 是否使用攻击型道具或法术 -->
+    </script>
+  </cheat>
+
+  <cheat desc="第五关 吴 - 必出有血条犬神">
+   <comment>第五关吴国特殊剧情，
+开启后即使走B路玩一年也会出现</comment>
+    <script state="run">
+      <action>maincpu.rw@100D961A=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.pw@2002045C=0E5C</action>  <!-- 时间限制 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100D961A=280F</action>  <!-- 官阶需求 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="第六关 - 必进沙摩柯火牛密室且一击出物">
+   <comment>先右后左，进密室后打一下石像后站着等就行</comment>
+    <script state="run">
+      <action>maincpu.rw@100C93C8=4280</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@100C998A=E006</action>  <!-- 进沙摩柯时间限制 -->
+      <action>maincpu.pw@20020E7C=04B0</action>  <!-- 击打等待时间 -->
+      <action>maincpu.pb@20020E7E=03</action>  <!-- 总打对次数 -->
+      <action>maincpu.rw@100D4A20=0000</action>  <!-- 打墙次数 -->
+      <action>maincpu.pb@20020E81=maincpu.pb@20020E7F</action>  <!-- 当前打对次数 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100C93C8=2813</action>  <!-- 官阶需求 -->
+      <action>maincpu.rw@100C998A=DA06</action>  <!-- 进沙摩柯时间限制 -->
+      <action>maincpu.rw@100D4A20=7018</action>  <!-- 打墙次数 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="横扫千军 - 总杀敌数  设置">
+   <comment>区别是最后一关出真卑弥呼还是普通卑弥呼</comment>
+    <parameter>
+      <item value="0xFFFF">65535</item>
+      <item value="0x0000">0</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@20021080=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 时间  设置">
+    <parameter>
+      <item value="0x64">无限</item>
+      <item value="0x00">置0</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pb@200201E6=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 降将时间不减">
+   <comment>可自由变回原角色</comment>
+    <script state="run">
+      <action>maincpu.rw@200109C0=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@200109C0=80C8</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 神器时间无限">
+    <script state="run">
+      <action>maincpu.pb@20020244=FF</action>  <!-- 青龙 -->
+      <action>maincpu.pb@20020245=FF</action>  <!-- 玄武 -->
+      <action>maincpu.pb@20020246=FF</action>  <!-- 朱雀 -->
+      <action>maincpu.pb@20020247=FF</action>  <!-- 白虎 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 兵法时间无限">
+    <script state="run">
+      <action>maincpu.pb@20020282=36</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 角色无敌">
+    <script state="run">
+      <action>maincpu.pb@2005FC96=01</action>  <!-- 1P -->
+      <action>maincpu.pb@200600D2=01</action>  <!-- 2P -->
+      <action>maincpu.pb@2006050E=01</action>  <!-- 3P -->
+      <action>maincpu.pb@2006094A=01</action>  <!-- 4P -->
+    </script>
+    <script state="off">
+      <action>maincpu.pb@2005FC96=00</action>  <!-- 1P -->
+      <action>maincpu.pb@200600D2=00</action>  <!-- 2P -->
+      <action>maincpu.pb@2006050E=00</action>  <!-- 3P -->
+      <action>maincpu.pb@2006094A=00</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无限气">
+    <script state="run">
+      <action>maincpu.pb@2005FD3A=05</action>  <!-- 1P -->
+      <action>maincpu.pb@20060176=05</action>  <!-- 2P -->
+      <action>maincpu.pb@200605B2=05</action>  <!-- 3P -->
+      <action>maincpu.pb@200609EE=05</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无限物品">
+    <script state="run">
+      <action>maincpu.pb@200494CE=09</action>  <!-- 1P -->
+      <action>maincpu.pb@200494D4=09</action>
+      <action>maincpu.pb@200494DA=09</action>
+      <action>maincpu.pb@200494E0=09</action>
+      <action>maincpu.pb@200494E6=09</action>
+      <action>maincpu.pb@200494EC=09</action>
+      <action>maincpu.pb@200494F2=09</action>
+      <action>maincpu.pb@200494F8=09</action>
+      <action>maincpu.pb@2004969A=09</action>  <!-- 2P -->
+      <action>maincpu.pb@200496A0=09</action>
+      <action>maincpu.pb@200496A6=09</action>
+      <action>maincpu.pb@200496AC=09</action>
+      <action>maincpu.pb@200496B2=09</action>
+      <action>maincpu.pb@200496B8=09</action>
+      <action>maincpu.pb@200496BE=09</action>
+      <action>maincpu.pb@200496C4=09</action>
+      <action>maincpu.pb@20049866=09</action>  <!-- 3P -->
+      <action>maincpu.pb@2004986C=09</action>
+      <action>maincpu.pb@20049872=09</action>
+      <action>maincpu.pb@20049878=09</action>
+      <action>maincpu.pb@2004987E=09</action>
+      <action>maincpu.pb@20049884=09</action>
+      <action>maincpu.pb@2004988A=09</action>
+      <action>maincpu.pb@20049890=09</action>
+      <action>maincpu.pb@20049A32=09</action>  <!-- 4P -->
+      <action>maincpu.pb@20049A38=09</action>
+      <action>maincpu.pb@20049A3E=09</action>
+      <action>maincpu.pb@20049A44=09</action>
+      <action>maincpu.pb@20049A4A=09</action>
+      <action>maincpu.pb@20049A50=09</action>
+      <action>maincpu.pb@20049A56=09</action>
+      <action>maincpu.pb@20049A5C=09</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 策略连环">
+   <comment>可连续使用大范围法术技能及阵法，
+已知问题是开启后使用八阵图敌方飞上天后会立即掉下来</comment>
+    <script state="run">
+      <action>maincpu.rw@1003BBC2=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1003BBC2=8008</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无限连击">
+    <script state="run">
+      <action>maincpu.rw@1000C81C=0000</action>  <!-- 大部分 -->
+      <action>maincpu.rw@1000A86C=0000</action>  <!-- 法术 -->
+      <action>maincpu.rw@1003C24A=0000</action>  <!-- 部分法术 -->
+      <action>maincpu.rw@10004F26=0000</action>  <!-- 招式 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000C81C=80C1</action>  <!-- 大部分 -->
+      <action>maincpu.rw@1000A86C=80C1</action>  <!-- 法术 -->
+      <action>maincpu.rw@1003C24A=5213</action>  <!-- 部分法术 -->
+      <action>maincpu.rw@10004F26=80C1</action>  <!-- 招式 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无限制4A">
+   <comment>即使没打到敌方也能4A，
+如赵云←→B即使未打到敌方也能原地乱舞</comment>
+    <script state="run">
+      <action>maincpu.pb@2005FB54=01</action>  <!-- 1P -->
+      <action>maincpu.pb@2005FF90=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200603CC=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20060808=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无限制跳跃">
+    <script state="run">
+      <action>maincpu.rw@2000C9C0=E01F</action>  <!-- 判断不能三段跳角色是否有踏云天衣 -->
+      <action>maincpu.pb@2005FCF6=01</action>  <!-- 1P -->
+      <action>maincpu.pb@20060132=01</action>  <!-- 2P -->
+      <action>maincpu.pb@2006056E=01</action>  <!-- 3P -->
+      <action>maincpu.pb@200609AA=01</action>  <!-- 4P -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@2000C9C0=D01F</action>  <!-- 判断不能三段跳角色是否有踏云天衣 -->
+      <action>maincpu.pb@2005FCF6=00</action>  <!-- 1P -->
+      <action>maincpu.pb@20060132=00</action>  <!-- 2P -->
+      <action>maincpu.pb@2006056E=00</action>  <!-- 3P -->
+      <action>maincpu.pb@200609AA=00</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 招式BT连">
+   <comment>大部分招式打到后几乎无间隔连到死，除非关闭此项，
+一般连打用 "连打效应" 功能就行</comment>
+    <script state="run">
+      <action>maincpu.rw@1000B7DC=0000</action>
+      <action>maincpu.rw@20010BEA=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000B7DC=8A40</action>
+      <action>maincpu.rw@20010BEA=8980</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 部分技能及阵法道具攻击间隔大幅减少">
+   <comment>如庞统的闪电和指地成钢</comment>
+    <script state="run">
+      <action>maincpu.rw@10009D72=0000</action>
+      <action>maincpu.rw@2000600A=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10009D72=8241</action>
+      <action>maincpu.rw@2000600A=8081</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 连打状态">
+   <comment>无残影，关闭后立即解除连打状态</comment>
+    <script state="run">
+      <action>maincpu.pb@2005FB4A=01</action>  <!-- 1P -->
+      <action>maincpu.pb@2005FF86=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200603C2=01</action>  <!-- 3P -->
+      <action>maincpu.pb@200607FE=01</action>  <!-- 4P -->
+    </script>
+    <script state="off">
+      <action>maincpu.pb@2005FB4A=00</action>  <!-- 1P -->
+      <action>maincpu.pb@2005FF86=00</action>  <!-- 2P -->
+      <action>maincpu.pb@200603C2=00</action>  <!-- 3P -->
+      <action>maincpu.pb@200607FE=00</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 降将爆气连打状态">
+   <comment>无残影，关闭后立即解除连打状态</comment>
+    <script state="run">
+      <action>maincpu.pw@2005FC22=042C</action>  <!-- 1P 降将爆气持续时间 -->
+      <action>maincpu.pw@2006005E=042C</action>  <!-- 2P 降将爆气持续时间 -->
+      <action>maincpu.pw@2006049A=042C</action>  <!-- 3P 降将爆气持续时间 -->
+      <action>maincpu.pw@200608D6=042C</action>  <!-- 4P 降将爆气持续时间 -->
+    </script>
+    <script state="off">
+      <action>maincpu.pw@2005FC22=0000</action>  <!-- 1P 降将爆气持续时间 -->
+      <action>maincpu.pw@2006005E=0000</action>  <!-- 2P 降将爆气持续时间 -->
+      <action>maincpu.pw@2006049A=0000</action>  <!-- 3P 降将爆气持续时间 -->
+      <action>maincpu.pw@200608D6=0000</action>  <!-- 4P 降将爆气持续时间 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 移除连击修正">
+   <comment>移除连击计算，不会因连击数而修正伤害，也不会有连击分数奖励</comment>
+    <script state="run">
+      <action>maincpu.rw@1000A2C6=0000</action>  <!-- 大部分 -->
+      <action>maincpu.rw@1000A5CA=0000</action>  <!-- 法术 -->
+      <action>maincpu.rw@10042D5C=0000</action>  <!-- 部分法术 -->
+      <action>maincpu.rw@1000BEBC=0000</action>  <!-- 招式 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000A2C6=8108</action>  <!-- 大部分 -->
+      <action>maincpu.rw@1000A5CA=8108</action>  <!-- 法术 -->
+      <action>maincpu.rw@10042D5C=8108</action>  <!-- 部分法术 -->
+      <action>maincpu.rw@1000BEBC=8108</action>  <!-- 招式 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 强制破敌霸体">
+    <script state="run">
+      <action>maincpu.rw@10011828=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10011828=8348</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 解除武器限制">
+    <script state="run">
+      <action>maincpu.rw@2000C2A6=E02F</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@2000C2A6=D02F</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 默认武器可破铁箱">
+    <script state="run">
+      <action>maincpu.rw@10097A94=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10097A94=D067</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 闪电不闪屏">
+   <comment>如庞统和孔明的←→B闪电，
+但不要在闪电还在持续的时候关闭，会持续白屏</comment>
+    <script state="run">
+      <action condition="maincpu.pb@200202A8 != 2">maincpu.pb@200202A8=02</action>
+    </script>
+    <script state="off">
+      <action>maincpu.pb@200202A8=00</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 法术瞬发">
+    <script state="run">
+      <action>maincpu.rw@200069F0=E00A</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@200069F0=D00A</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 建筑一击即破">
+   <comment>注意事项：
+第三关 下井前关闭，否则水闸打不破
+以及某些建筑物打破后仍会有空气墙，
+若遇到走不过的空气墙，开启随意走就能过，
+暂知这些，其它未刻意测试
+   </comment>
+    <script state="run">
+      <action>maincpu.rw@1000DAF2=E07A</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000DAF2=D07A</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 过关仍可动">
+   <comment>
+过关结算不会强制站街，但分数计算完还是会摆下pose，
+需要注意的是在过图的时候不要动方向或者攻击跳跃使用物品键，不然会卡墙里
+   </comment>
+    <script state="run">
+      <action>maincpu.pb@20020347=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 随意走">
+   <comment>可解决开启 "过关仍可动" 后的不当操作造成的卡墙，
+亦可开启后满地图跑，关闭后解除随意走</comment>
+    <script state="run">
+      <action>maincpu.pb@2005FB3E=01</action>  <!-- 1P -->
+      <action>maincpu.pb@2005FF7A=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200603B6=01</action>  <!-- 3P -->
+      <action>maincpu.pb@200607F2=01</action>  <!-- 4P -->
+    </script>
+    <script state="off">
+      <action>maincpu.pb@2005FB3E=00</action>  <!-- 1P -->
+      <action>maincpu.pb@2005FF7A=00</action>  <!-- 2P -->
+      <action>maincpu.pb@200603B6=00</action>  <!-- 3P -->
+      <action>maincpu.pb@200607F2=00</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 拾取特殊物品无视官阶需求">
+    <script state="run">
+      <action>maincpu.rw@100387D2=4280</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100387D2=4288</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 特殊触发点无视官阶需求">
+   <comment>
+第一关 博望坡石碑
+第五关 魏国路线跳崖
+   </comment>
+    <script state="run">
+      <action>maincpu.rw@1009BF9E=4280</action>  <!-- 第一关_博望坡石碑 -->
+      <action>maincpu.rw@100BD4A8=4280</action>  <!-- 第五关_魏国路线血狗 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1009BF9E=2804</action>  <!-- 第一关_博望坡石碑 -->
+      <action>maincpu.rw@100BD4A8=2819</action>  <!-- 第五关_魏国路线血狗 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 本体攻击全屏">
+   <comment>
+用于开启技能间隔减少但又想本体攻击全攻，
+自行选择是否将注释行的注释去掉，
+去掉后本体攻击可全段作用于全屏敌方，
+但会强制连打</comment>
+    <script state="run">
+      <action>maincpu.rw@1000B81C=E001</action>  <!-- 本体攻击 -->
+      <!-- <action>maincpu.rw@1000B832=E003</action> -->
+  <!-- 本体攻击可否对所有敌方进行后续连击  [连打] -->
+      <action>maincpu.rw@1000B856=0000</action>  <!-- 修复武器攻击属性无法作用于所有敌方 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000B81C=D101</action>
+      <!-- <action>maincpu.rw@1000B832=D103</action> -->
+      <action>maincpu.rw@1000B856=D00F</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 全屏攻击">
+   <comment>
+不要和 "部分技能及阵法道具攻击间隔大幅减少" 同时开启，
+会出各种问题，其次非本体攻击部分不够完美，
+可能会修复，也可能不会，
+自行选择是否将注释行的注释去掉，
+去掉后本体攻击可全段作用于全屏敌方，
+但会强制连打</comment>
+    <script state="run">
+      <action>maincpu.rw@1000B81C=E001</action>  <!-- 本体攻击 -->
+      <!-- <action>maincpu.rw@1000B832=E003</action> -->
+  <!-- 本体攻击可否对所有敌方进行后续连击  [连打] -->
+      <action>maincpu.rw@1000B856=0000</action>  <!-- 修复武器攻击属性无法作用于所有敌方 -->
+      <action>maincpu.rw@10009D3C=E004</action>  <!-- 非本体攻击 -->
+      <action>maincpu.rw@10009D62=0000</action>  <!-- 非本体攻击能否远距离及背对击中 -->
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1000B81C=D101</action>
+      <!-- <action>maincpu.rw@1000B832=D103</action> -->
+      <action>maincpu.rw@1000B856=D00F</action>
+      <action>maincpu.rw@10009D3C=D104</action>
+      <action>maincpu.rw@10009D62=D079</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 过图随机换人">
+    <script state="run">
+      <!-- 1P -->
+      <action condition="maincpu.pb@20060B8A!=FF">maincpu.pb@20060B8A+=1</action>
+      <action condition="maincpu.pb@20060B8A==12">maincpu.pb@20060B8A=00</action>  <!-- 判断1P角色代码是否超标，若超标则置0 -->
+      <!-- 2P -->
+      <action condition="maincpu.pb@20060FDE!=FF">maincpu.pb@20060FDE+=1</action>
+      <action condition="maincpu.pb@20060FDE==12">maincpu.pb@20060FDE=00</action>  <!-- 判断2P角色代码是否超标，若超标则置0 -->
+      <!-- 3P -->
+      <action condition="maincpu.pb@20061432!=FF">maincpu.pb@20061432+=1</action>
+      <action condition="maincpu.pb@20061432==12">maincpu.pb@20061432=00</action>  <!-- 判断3P角色代码是否超标，若超标则置0 -->
+      <!-- 4P -->
+      <action condition="maincpu.pb@20061886!=FF">maincpu.pb@20061886+=1</action>
+      <action condition="maincpu.pb@20061886==12">maincpu.pb@20061886=00</action>  <!-- 判断4P角色代码是否超标，若超标则置0 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 敌兵1v4">
+    <script state="run">
+      <action>maincpu.rw@100501E6=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@100501E6=DD01</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌兵是否逃跑  设置">
+   <comment>注意事项：
+1 若持续开启敌兵不逃跑，会无法过图或过关，关闭即可
+2 第五关魏国进打曹操那一整条路之前关闭，否则会卡场景
+3 第五关吴国下水道密室门口死胖子处关闭，否则死机
+暂知这些，其它未刻意测试</comment>
+    <parameter>
+      <item value="0x0000">直接逃跑</item>
+      <item value="0xFFFF">永不逃跑</item>
+    </parameter>
+    <script state="run">
+      <action>maincpu.pw@2006D168=param</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌将死亡无白屏及慢动作">
+    <script state="run">
+      <action>maincpu.rw@1001365C=4280</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1001365C=2800</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌兵可无限撞出物品">
+   <comment>只对敌兵有效，对BOSS无效，
+反正BOSS身上也撞不出什么</comment>
+    <script state="run">
+      <action>maincpu.rw@1005007E=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1005007E=5301</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 无视敌兵过图">
+   <comment>敌兵特别多的地图不要用，会死机</comment>
+    <script state="run">
+      <action condition="maincpu.pb@200203C4 lt b">maincpu.pb@2002040B=00</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 一击杀敌">
+   <comment>可能会遇到卡分数结算</comment>
+    <script state="run">
+      <action>maincpu.rw@10013558=E011</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@10013558=DD11</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌方血量不减">
+    <script state="run">
+      <action>maincpu.rw@1001356C=0000</action>
+    </script>
+    <script state="off">
+      <action>maincpu.rw@1001356C=8201</action>
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 敌方不可动">
+    <script state="run">
+      <action>maincpu.pb@200203DD=00</action>
+    </script>
+    <script state="off">
+      <action>maincpu.pb@200203DD=01</action>
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 当前防具">
+   <comment>设置后防具不会直接生效，需把防具丢出捡回</comment>
+    <parameter>
+      <item value="0x8A">重甲金锁 (防+100%)</item>
+      <item value="0x8D">黄袍 (防+4%，加度集气)</item>
+      <item value="0x8C">风神袍 (防+7%，移动速度加快)</item>
+      <item value="0x8B">金丝战袍 (防+7%，出招硬汉)</item>
+      <item value="0x85">太平道袍 (防+9%，防混乱)</item>
+      <item value="0x88">踏云天衣 (防+9%，防电，三段跳跃)</item>
+      <item value="0x89">反刃甲 (防+9%，扣血或防御时对方损血)</item>
+      <item value="0x7B">青铜甲 (防+10%，防偷窃)</item>
+      <item value="0x91">张角黄袍 (防+10%，增加吃东西回血量)</item>
+      <item value="0x7C">锁子甲 (防+12%，防火)</item>
+      <item value="0x90">赤兔战甲 (防+12%，移动速度加快，3级跳跃)</item>
+      <item value="0x7E">蚩尤战甲 (防+12%，防混乱，防木化)</item>
+      <item value="0x8F">女娲羽衣 (防+12%，防所有属性)</item>
+      <item value="0x7D">明光铠 (防+14%，防火)</item>
+      <item value="0x84">于吉仙衣 (防+14%，防火，防晕)</item>
+      <item value="0x80">霸王战甲 (防+14%，防火，防爆，防晕)</item>
+      <item value="0x86">天师道袍 (防+14%，防电，防爆，防偷窃)</item>
+      <item value="0x7F">秦皇宝甲 (防+15%，防冰)</item>
+      <item value="0x82">鹤羽宝衣 (防+15%，防晕，防爆)</item>
+      <item value="0x83">鱼鳞宝衣 (防+15%，防混乱，防木化)</item>
+      <item value="0x87">张鲁战袍 (防+17%，防火，防毒)</item>
+      <item value="0x81">蛮王藤甲 (防+20%，防冰，防电)</item>
+      <item value="0x8E">骷髅铠甲 (防+60%，攻+15%，速-50%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@2004952C=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@2004952E==00">maincpu.pb@2004952E=01</action>  <!-- 1P -->
+      <action>maincpu.pb@200496F8=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@200496FA==00">maincpu.pb@200496FA=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498C4=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498C6==00">maincpu.pb@200498C6=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049A90=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049A92==00">maincpu.pb@20049A92=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前官阶">
+    <parameter>
+      <item value="0x21">[青色] 专属官阶</item>
+      <item value="0x00">[灰色] 九品官</item>
+      <item value="0x01">[灰色] 八品官</item>
+      <item value="0x02">[灰色] 七品官</item>
+      <item value="0x03">[灰色] 六品官</item>
+      <item value="0x04">[灰色] 五品官</item>
+      <item value="0x05">[灰色] 四品官</item>
+      <item value="0x06">[灰色] 三品官</item>
+      <item value="0x07">[灰色] 二品官</item>
+      <item value="0x08">[灰色] 一品官</item>
+      <item value="0x09">[灰色] 指挥官</item>
+      <item value="0x0A">[灰色] 都尉</item>
+      <item value="0x0B">[灰色] 校尉</item>
+      <item value="0x0C">[绿色] 偏将军</item>
+      <item value="0x0D">[绿色] 杂号将军</item>
+      <item value="0x0E">[绿色] 牙门将军</item>
+      <item value="0x0F">[绿色] 右将军</item>
+      <item value="0x10">[绿色] 左将军</item>
+      <item value="0x11">[绿色] 后将军</item>
+      <item value="0x12">[绿色] 前将军</item>
+      <item value="0x13">[绿色] 车骑将军</item>
+      <item value="0x14">[绿色] 骠骑将军</item>
+      <item value="0x15">[绿色] 镇远将军</item>
+      <item value="0x16">[绿色] 大将军</item>
+      <item value="0x17">[绿色] 宰相</item>
+      <item value="0x18">[绿色] 丞相</item>
+      <item value="0x19">[绿色] 霸者</item>
+      <item value="0x1A">[绿色] 霸王</item>
+      <item value="0x1B">[紫色] 英杰</item>
+      <item value="0x1C">[紫色] 皇帝</item>
+      <item value="0x1D">[紫色] 征霸王</item>
+      <item value="0x1E">[紫色] 大英雄</item>
+      <item value="0x1F">[紫色] 大都督</item>
+      <item value="0x20">[紫色] 大军师</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@20060EC0=param</action>  <!-- 1P -->
+      <action>maincpu.pb@20061314=param</action>  <!-- 2P -->
+      <action>maincpu.pb@20061768=param</action>  <!-- 3P -->
+      <action>maincpu.pb@20061BBC=param</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前饰品 - [腿部]">
+    <parameter>
+      <item value="0x98">赤雷护腿</item>
+      <item value="0x92">赤焰战靴</item>
+      <item value="0x99">青雷护腿</item>
+      <item value="0x93">青焰战靴</item>
+      <item value="0x9A">碧雷护腿</item>
+      <item value="0x94">碧焰战靴</item>
+      <item value="0x9B">紫雷护腿</item>
+      <item value="0x95">紫焰战靴</item>
+      <item value="0x9C">闇雷护腿</item>
+      <item value="0x96">闇焰战靴</item>
+      <item value="0x9D">天雷护腿</item>
+      <item value="0x97">天焰战靴</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@20049532=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@20049534==00">maincpu.pb@20049534=01</action>  <!-- 1P -->
+      <action>maincpu.pb@200496FE=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@20049700==00">maincpu.pb@20049700=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498CA=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498CC==00">maincpu.pb@200498CC=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049A96=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049A98==00">maincpu.pb@20049A98=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前饰品 - [披风]">
+    <parameter>
+      <item value="0x9E">赤魂披风</item>
+      <item value="0x9F">青魂披风</item>
+      <item value="0xA0">碧魂披风</item>
+      <item value="0xA1">紫魂披风</item>
+      <item value="0xA2">闇魂披风</item>
+      <item value="0xA3">天魂披风</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@20049538=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@2004953A==00">maincpu.pb@2004953A=01</action>  <!-- 1P -->
+      <action>maincpu.pb@20049704=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@20049706==00">maincpu.pb@20049706=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498D0=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498D2==00">maincpu.pb@200498D2=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049A9C=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049A9E==00">maincpu.pb@20049A9E=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前饰品 - [戒指]">
+    <parameter>
+      <item value="0xA4">赤影指环</item>
+      <item value="0xA5">青影指环</item>
+      <item value="0xA6">碧影指环</item>
+      <item value="0xA7">紫影指环</item>
+      <item value="0xA8">闇影指环</item>
+      <item value="0xA9">天影指环</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@2004953E=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@20049540==00">maincpu.pb@20049540=01</action>  <!-- 1P -->
+      <action>maincpu.pb@2004970A=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@2004970C==00">maincpu.pb@2004970C=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498D6=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498D8==00">maincpu.pb@200498D8=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049AA2=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049AA4==00">maincpu.pb@20049AA4=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前饰品 - [玉佩]">
+    <parameter>
+      <item value="0xAA">守宫玉佩</item>
+      <item value="0xAB">朱雀玉佩</item>
+      <item value="0xAC">白虎玉佩</item>
+      <item value="0xAD">玄武玉佩</item>
+      <item value="0xAE">青龙玉佩</item>
+      <item value="0xAF">鹞子玉佩</item>
+      <item value="0xB0">雷神玉佩</item>
+      <item value="0xB1">天帝玉佩</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@20049544=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@20049546==00">maincpu.pb@20049546=01</action>  <!-- 1P -->
+      <action>maincpu.pb@20049710=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@20049712==00">maincpu.pb@20049712=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498DC=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498DE==00">maincpu.pb@200498DE=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049AA8=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049AAA==00">maincpu.pb@20049AAA=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 当前图腾">
+    <parameter>
+      <item value="0XBA">白虎图腾</item>
+      <item value="0XB2">疾风连弩</item>
+      <item value="0XB3">水计连环</item>
+      <item value="0XB4">民兵号令</item>
+      <item value="0XB5">刀兵令旗</item>
+      <item value="0XB6">赤壁大火</item>
+      <item value="0XB7">东南风</item>
+      <item value="0XB8">攻守自在</item>
+      <item value="0XB9">朱雀图腾</item>
+      <item value="0XBB">青龙图腾</item>
+      <item value="0XBC">玄武图腾</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@2004954A=param</action>  <!-- 1P -->
+      <action condition="maincpu.pb@2004954C==00">maincpu.pb@2004954C=01</action>  <!-- 1P -->
+      <action>maincpu.pb@20049716=param</action>  <!-- 2P -->
+      <action condition="maincpu.pb@20049718==00">maincpu.pb@20049718=01</action>  <!-- 2P -->
+      <action>maincpu.pb@200498E2=param</action>  <!-- 3P -->
+      <action condition="maincpu.pb@200498E4==00">maincpu.pb@200498E4=01</action>  <!-- 3P -->
+      <action>maincpu.pb@20049AAE=param</action>  <!-- 4P -->
+      <action condition="maincpu.pb@20049AB0==00">maincpu.pb@20049AB0=01</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品栏格数自定义">
+   <comment>当调的物品格数大于当前物品格数，原本没有物品的格子会错乱，
+   适用于开格子调物品，务必先开启无限物品，否则物品个数为0无法使用</comment>
+     <parameter min="0" max="8" step="1" />
+    <script state="change">
+      <action>maincpu.pb@2004955A=param</action>  <!-- 1P -->
+      <action>maincpu.pb@20049726=param</action>  <!-- 2P -->
+      <action>maincpu.pb@200498F2=param</action>  <!-- 3P -->
+      <action>maincpu.pb@20049ABE=param</action>  <!-- 4P -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品1 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494CC=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@20049698=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049864=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A30=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494CE==00">maincpu.pb@200494CE=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@2004969A==00">maincpu.pb@2004969A=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049866==00">maincpu.pb@20049866=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A32==00">maincpu.pb@20049A32=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品1 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494CC=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@20049698=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049864=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A30=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494CE==00">maincpu.pb@200494CE=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@2004969A==00">maincpu.pb@2004969A=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049866==00">maincpu.pb@20049866=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A32==00">maincpu.pb@20049A32=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品1 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494CC=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@20049698=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049864=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A30=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494CE==00">maincpu.pb@200494CE=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@2004969A==00">maincpu.pb@2004969A=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049866==00">maincpu.pb@20049866=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A32==00">maincpu.pb@20049A32=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品1 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494CC=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@20049698=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049864=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A30=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494CE==00">maincpu.pb@200494CE=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@2004969A==00">maincpu.pb@2004969A=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049866==00">maincpu.pb@20049866=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A32==00">maincpu.pb@20049A32=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品2 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D2=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@2004969E=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004986A=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A36=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494D4==00">maincpu.pb@200494D4=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A0==00">maincpu.pb@200496A0=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004986C==00">maincpu.pb@2004986C=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A38==00">maincpu.pb@20049A38=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品2 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D2=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@2004969E=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004986A=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A36=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494D4==00">maincpu.pb@200494D4=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A0==00">maincpu.pb@200496A0=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004986C==00">maincpu.pb@2004986C=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A38==00">maincpu.pb@20049A38=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品2 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D2=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@2004969E=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004986A=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A36=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494D4==00">maincpu.pb@200494D4=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A0==00">maincpu.pb@200496A0=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004986C==00">maincpu.pb@2004986C=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A38==00">maincpu.pb@20049A38=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品2 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D2=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@2004969E=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004986A=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A36=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494D4==00">maincpu.pb@200494D4=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A0==00">maincpu.pb@200496A0=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004986C==00">maincpu.pb@2004986C=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A38==00">maincpu.pb@20049A38=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品3 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D8=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496A4=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049870=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A3C=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494DA==00">maincpu.pb@200494DA=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A6==00">maincpu.pb@200496A6=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049872==00">maincpu.pb@20049872=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A3E==00">maincpu.pb@20049A3E=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品3 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D8=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496A4=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049870=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A3C=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494DA==00">maincpu.pb@200494DA=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A6==00">maincpu.pb@200496A6=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049872==00">maincpu.pb@20049872=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A3E==00">maincpu.pb@20049A3E=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品3 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D8=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496A4=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049870=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A3C=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494DA==00">maincpu.pb@200494DA=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A6==00">maincpu.pb@200496A6=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049872==00">maincpu.pb@20049872=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A3E==00">maincpu.pb@20049A3E=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品3 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494D8=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496A4=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049870=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A3C=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494DA==00">maincpu.pb@200494DA=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496A6==00">maincpu.pb@200496A6=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049872==00">maincpu.pb@20049872=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A3E==00">maincpu.pb@20049A3E=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品4 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494DE=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496AA=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049876=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A42=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E0==00">maincpu.pb@200494E0=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496AC==00">maincpu.pb@200496AC=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049878==00">maincpu.pb@20049878=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A44==00">maincpu.pb@20049A44=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品4 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494DE=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496AA=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049876=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A42=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E0==00">maincpu.pb@200494E0=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496AC==00">maincpu.pb@200496AC=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049878==00">maincpu.pb@20049878=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A44==00">maincpu.pb@20049A44=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品4 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494DE=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496AA=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049876=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A42=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E0==00">maincpu.pb@200494E0=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496AC==00">maincpu.pb@200496AC=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049878==00">maincpu.pb@20049878=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A44==00">maincpu.pb@20049A44=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品4 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494DE=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496AA=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049876=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A42=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E0==00">maincpu.pb@200494E0=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496AC==00">maincpu.pb@200496AC=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049878==00">maincpu.pb@20049878=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A44==00">maincpu.pb@20049A44=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品5 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494E4=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B0=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004987C=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A48=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E6==00">maincpu.pb@200494E6=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B2==00">maincpu.pb@200496B2=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004987E==00">maincpu.pb@2004987E=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A4A==00">maincpu.pb@20049A4A=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品5 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494E4=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B0=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004987C=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A48=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E6==00">maincpu.pb@200494E6=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B2==00">maincpu.pb@200496B2=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004987E==00">maincpu.pb@2004987E=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A4A==00">maincpu.pb@20049A4A=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品5 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494E4=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B0=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004987C=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A48=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E6==00">maincpu.pb@200494E6=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B2==00">maincpu.pb@200496B2=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004987E==00">maincpu.pb@2004987E=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A4A==00">maincpu.pb@20049A4A=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品5 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494E4=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B0=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004987C=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A48=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494E6==00">maincpu.pb@200494E6=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B2==00">maincpu.pb@200496B2=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004987E==00">maincpu.pb@2004987E=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A4A==00">maincpu.pb@20049A4A=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品6 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494EA=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B6=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049882=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A4E=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494EC==00">maincpu.pb@200494EC=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B8==00">maincpu.pb@200496B8=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049884==00">maincpu.pb@20049884=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A50==00">maincpu.pb@20049A50=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品6 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494EA=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B6=param</action>  <!-- 2P 物品代码 --> 
+      <action>maincpu.pb@20049882=param</action>  <!-- 3P 物品代码 --> 
+      <action>maincpu.pb@20049A4E=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494EC==00">maincpu.pb@200494EC=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B8==00">maincpu.pb@200496B8=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049884==00">maincpu.pb@20049884=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A50==00">maincpu.pb@20049A50=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品6 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494EA=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B6=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049882=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A4E=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494EC==00">maincpu.pb@200494EC=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B8==00">maincpu.pb@200496B8=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049884==00">maincpu.pb@20049884=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A50==00">maincpu.pb@20049A50=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品6 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494EA=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496B6=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049882=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A4E=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494EC==00">maincpu.pb@200494EC=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496B8==00">maincpu.pb@200496B8=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049884==00">maincpu.pb@20049884=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A50==00">maincpu.pb@20049A50=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品7 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F0=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496BC=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049888=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A54=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F2==00">maincpu.pb@200494F2=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496BE==00">maincpu.pb@200496BE=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004988A==00">maincpu.pb@2004988A=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A56==00">maincpu.pb@20049A56=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品7 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F0=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496BC=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049888=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A54=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F2==00">maincpu.pb@200494F2=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496BE==00">maincpu.pb@200496BE=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004988A==00">maincpu.pb@2004988A=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A56==00">maincpu.pb@20049A56=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品7 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F0=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496BC=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049888=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A54=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F2==00">maincpu.pb@200494F2=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496BE==00">maincpu.pb@200496BE=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004988A==00">maincpu.pb@2004988A=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A56==00">maincpu.pb@20049A56=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品7 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F0=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496BC=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@20049888=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A54=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F2==00">maincpu.pb@200494F2=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496BE==00">maincpu.pb@200496BE=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@2004988A==00">maincpu.pb@2004988A=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A56==00">maincpu.pb@20049A56=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc=" "/>
+
+  <cheat desc="通用 - 物品8 - [道具]">
+    <parameter>
+      <item value="0x12">青龙神器</item>
+      <item value="0x13">白虎神器</item>
+      <item value="0x14">朱雀神器</item>
+      <item value="0x15">玄武神器</item>
+      <item value="0x18">民兵策</item>
+      <item value="0x1B">神龙古水</item>
+      <item value="0x1C">威灵仙</item>
+      <item value="0x1D">荷首乌</item>
+      <item value="0x1E">薤叶芸香</item>
+      <item value="0x1F">七星灯</item>
+      <item value="0x20">流马</item>
+      <item value="0x21">木牛</item>
+      <item value="0x23">水兵策</item>
+      <item value="0x24">连环火甲车</item>
+      <item value="0x25">孙子兵法</item>
+      <item value="0x26">吴子兵法</item>
+      <item value="0x27">刀兵策</item>
+      <item value="0x28">道家密本</item>
+      <item value="0x29">道家法本</item>
+      <item value="0x2A">金珠</item>
+      <item value="0x2B">火焰弹</item>
+      <item value="0x2C">烟雾弹</item>
+      <item value="0x2D">铁莲花</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F6=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496C2=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004988E=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A5A=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F8==00">maincpu.pb@200494F8=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496C4==00">maincpu.pb@200496C4=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049890==00">maincpu.pb@20049890=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A5C==00">maincpu.pb@20049A5C=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品8 - [降将]">
+    <parameter>
+      <item value="0x2E">程昱</item>
+      <item value="0x2F">夏侯渊</item>
+      <item value="0x30">夏侯惇</item>
+      <item value="0x31">徐晃</item>
+      <item value="0x32">许褚</item>
+      <item value="0x33">张郃</item>
+      <item value="0x34">牛金</item>
+      <item value="0x35">甘宁</item>
+      <item value="0x36">周泰</item>
+      <item value="0x37">吕布</item>
+      <item value="0x38">曹操</item>
+      <item value="0x39">虎符</item>
+      <item value="0x3A">将军印</item>
+      <item value="0x3B">令旗</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F6=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496C2=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004988E=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A5A=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F8==00">maincpu.pb@200494F8=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496C4==00">maincpu.pb@200496C4=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049890==00">maincpu.pb@20049890=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A5C==00">maincpu.pb@20049A5C=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品8 - [武器]">
+    <parameter>
+      <item value="0x54">[孙]  长槊  (默认)</item>
+      <item value="0x55">[孙]  盘龙三节棍  (攻-18%)</item>
+      <item value="0x79">[孙]  落凤三节棍  (攻+12%，毒)</item>
+      <item value="0x7A">[孙]  燃龙三节棍  (攻-15%，火，自动集气)</item>
+      <item value="0x3D">[关]  大砍刀  (默认)</item>
+      <item value="0x3E">[关]  青龙偃月刀  (攻+12%)</item>
+      <item value="0x69">[关]  屠龙偃月刀  (攻+15%，电)</item>
+      <item value="0x59">[关]  凤翔烈阳刀  (攻+28%，火)</item>
+      <item value="0x6A">[关]  狂龙偃月刀  (攻+37%)</item>
+      <item value="0x40">[张]  蛇矛  (默认)</item>
+      <item value="0x41">[张]  丈八蛇矛  (攻+12%)</item>
+      <item value="0x6B">[张]  大蛇矛  (攻+28%)</item>
+      <item value="0x6C">[张]  破军蛇矛  (攻+45%)</item>
+      <item value="0x42">[赵]  长枪  (默认)</item>
+      <item value="0x6D">[赵]  豪胆尖枪  (攻+17%)</item>
+      <item value="0x43">[赵]  红樱梨花枪  (攻+18%)</item>
+      <item value="0x6E">[赵]  南凤朱雀枪  (攻+26%，火)</item>
+      <item value="0x44">[黄]  长弓  (默认)</item>
+      <item value="0x45">[黄]  毒龙铁胎弓  (攻+12%，毒)</item>
+      <item value="0x5D">[黄]  天火双煞弓  (攻+28%，火电)</item>
+      <item value="0x46">[黄]  祝融神火弓  (攻+37%，火)</item>
+      <item value="0x6F">[黄]  共工玄冰矢  (攻+37%，冰)</item>
+      <item value="0x70">[黄]  汉升战弓  (攻+68%)</item>
+      <item value="0x47">[黄]  猛虎劈山弓  (攻+100%，爆)</item>
+      <item value="0x4E">[貂]  匕首  (默认)</item>
+      <item value="0x4F">[貂]  血匕首  (攻+18%)</item>
+      <item value="0x75">[貂]  雲石匕首  (攻+12%)</item>
+      <item value="0x76">[貂]  日月双钩  (攻+25%)</item>
+      <item value="0x50">[貂]  飞天虎爪  (攻+32%)</item>
+      <item value="0x48">[马]  长剑  (默认)</item>
+      <item value="0x49">[马]  倚天剑  (攻+25%)</item>
+      <item value="0x4B">[马]  玄铁鸳鸯简  (攻+10%，晕)</item>
+      <item value="0x71">[马]  人马钢剑  (攻+19%，防+18%)</item>
+      <item value="0x72">[马]  西凉宝剑  (攻+50%)</item>
+      <item value="0x4A">[马]  青缸剑  (攻+50)</item>
+      <item value="0x73">[诸]  七星剑  (攻+12%，加速集气)</item>
+      <item value="0x62">[诸]  赤锋  (攻+23%，电)</item>
+      <item value="0x74">[诸]  卧龙羽扇  (攻+25%，防所有属性)</item>
+      <item value="0x4D">[诸]  天罡劈水扇  (攻+26%，冰)</item>
+      <item value="0x61">[诸]  巫羽  (攻+42%，爆)</item>
+      <item value="0x4C">[诸]  五火神焰扇  (攻+50%，火)</item>
+      <item value="0x51">[庞]  弯刀  (默认)</item>
+      <item value="0x53">[庞]  巫刀  (攻+20%)</item>
+      <item value="0x52">[庞]  吴钩  (攻+25%)</item>
+      <item value="0x77">[庞]  古锭刀  (攻+25%)</item>
+      <item value="0x78">[庞]  血喉刃  (攻+90%，自动扣血)</item>
+      <item value="0x5C">[张关赵]  真方天画戟  (攻+14%，火)</item>
+      <item value="0x3F">[张关赵]  方天画戟  (攻+45%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F6=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496C2=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004988E=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A5A=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F8==00">maincpu.pb@200494F8=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496C4==00">maincpu.pb@200496C4=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049890==00">maincpu.pb@20049890=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A5C==00">maincpu.pb@20049A5C=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+  <cheat desc="通用 - 物品8 - [隐藏武器]">
+    <parameter>
+      <item value="0x3C">[无]  玄兵录  (无攻)</item>
+      <item value="0x57">[无]  神兵利器 黄鞭子  (攻-100%)</item>
+      <item value="0x56">[无]  神兵利器 蓝鞭子  (攻-100%)</item>
+      <item value="0x58">[无]  神兵利器 紫鞭子  (攻-100%)</item>
+      <item value="0x5A">[无]  神兵利器 矛  (攻-100%)</item>
+      <item value="0x5B">[无]  神兵利器 枪  (攻-100%)</item>
+      <item value="0x60">[无]  神兵利器 金简  (攻-100%)</item>
+      <item value="0x5F">[无]  神兵利器 剑  (攻-100%)</item>
+      <item value="0x64">[无]  神兵利器 巫刀  (攻-100%)</item>
+      <item value="0x63">[无]  神兵利器 吴钩  (攻-100%)</item>
+      <item value="0x65">[无]  神兵利器 匕首  (攻-100%)</item>
+      <item value="0x66">[无]  神兵利器 爪  (攻-100%)</item>
+      <item value="0x5E">[无]  神兵利器 弓  (攻-100%)</item>
+      <item value="0x68">[无]  神兵利器 长槊  (攻-100%)</item>
+      <item value="0x67">[无]  神兵利器 三节棍  (攻-100%)</item>
+    </parameter>
+    <script state="change">
+      <action>maincpu.pb@200494F6=param</action>  <!-- 1P 物品代码 -->
+      <action>maincpu.pb@200496C2=param</action>  <!-- 2P 物品代码 -->
+      <action>maincpu.pb@2004988E=param</action>  <!-- 3P 物品代码 -->
+      <action>maincpu.pb@20049A5A=param</action>  <!-- 4P 物品代码 -->
+      <action condition="maincpu.pb@200494F8==00">maincpu.pb@200494F8=01</action>  <!-- 1P 物品数量检测 -->
+      <action condition="maincpu.pb@200496C4==00">maincpu.pb@200496C4=01</action>  <!-- 2P 物品数量检测 -->
+      <action condition="maincpu.pb@20049890==00">maincpu.pb@20049890=01</action>  <!-- 3P 物品数量检测 -->
+      <action condition="maincpu.pb@20049A5C==00">maincpu.pb@20049A5C=01</action>  <!-- 4P 物品数量检测 -->
+    </script>
+  </cheat>
+
+
+</mamecheat>

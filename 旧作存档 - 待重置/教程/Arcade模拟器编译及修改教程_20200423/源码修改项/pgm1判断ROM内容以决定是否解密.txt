@@ -1,0 +1,26 @@
+
+# src\mame\machine\pgmcrypt.cpp
+
+void pgm_kov_decrypt(running_machine &machine)
+{
+	int i;
+	uint16_t *src = (uint16_t *) (machine.root_device().memregion("maincpu")->base()+0x100000);
+
+// 新增 - 判断ROM内容以决定是否解密 - START
+    if( src[0] < 200 ) return;
+// 新增 - 判断ROM内容以决定是否解密 - END
+
+	int rom_size = 0x400000;
+
+
+
+kov
+kovsh
+
+kov2
+kov2p
+
+oldsplus
+
+kovshp
+

@@ -1,9 +1,0 @@
-
-  <cheat desc="通用 - 敌兵1v4">
-    <script state="run">
-      <action>maincpu.rw@191FD4=4E71</action>
-    </script>
-    <script state="off">
-      <action>maincpu.rw@191FD4=6C04</action>
-    </script>
-  </cheat>

@@ -1,0 +1,37 @@
+
+# src\emu\debug\debugcon.cpp
+
+debugger_console::debugger_console(running_machine &machine)
+	: m_machine(machine)
+	, m_console_textbuf(nullptr)
+	, m_errorlog_textbuf(nullptr)
+{
+	/* allocate text buffers */
+	m_console_textbuf = text_buffer_alloc(CONSOLE_BUF_SIZE, CONSOLE_MAX_LINES);
+	if (!m_console_textbuf)
+		return;
+
+	m_errorlog_textbuf = text_buffer_alloc(ERRORLOG_BUF_SIZE, ERRORLOG_MAX_LINES);
+	if (!m_errorlog_textbuf)
+		return;
+
+	/* print the opening lines */
+	printf("%s debugger version %s\n", emulator_info::get_appname(), emulator_info::get_build_version());
+	printf("Currently targeting %s (%s)\n", m_machine.system().name, m_machine.system().type.fullname());
+// 移除调试器启动显示文字  // 注释或删除上方2行
+
+// ----------------------------------------------------------------
+// 新增 - 显示内存区域起始地址 - START
+
+	printf("\nRegions start address :\n");  // "\n\n" 间文字可任意修改，\n 表示换行
+	for (auto &region : machine.memory().regions())
+	{
+		printf("%s = %X\n", region.second->name(), region.second->base());  // 较新版Arcade中此处X不论大写或小写，最终显示的仍是小写，原因未知
+	}
+	printf("\n");
+
+// 新增 - 显示内存区域起始地址 - END
+// ----------------------------------------------------------------
+
+	/* request callback upon exiting */
+	m_machine.add_notifier(MACHINE_NOTIFY_EXIT, machine_notify_delegate(&debugger_console::exit, this));

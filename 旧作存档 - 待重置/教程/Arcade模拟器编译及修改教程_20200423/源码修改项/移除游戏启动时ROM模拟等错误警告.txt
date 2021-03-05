@@ -1,9 +1,0 @@
-
-# src\emu\romload.cpp
-
-if ((m_warnings) || (m_knownbad))
-	{
-		m_errorstring.append("WARNING: the machine might not run correctly.");
-		osd_printf_warning("%s\n", m_errorstring.c_str());
-// 注释或删除上方2行
-	}
